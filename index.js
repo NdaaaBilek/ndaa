@@ -7,6 +7,7 @@ const pino = require('pino');
 const fetch = require('node-fetch');
 const axios = require('axios');
 const dl = require('@bochilteam/scraper');
+const dlx = require('api-dylux')
 const cheerio = require('cheerio');
 const chalk = require('chalk');
 const { Odesus } = require('odesus');
@@ -441,13 +442,13 @@ case 'tiktok':
   if (!q) {
     return reply(`Contoh:\n${prefix + command} URL`);
   }
-  dl.savefrom(q).then(data => {
+  dlx.tiktok(q).then(data => {
     fakeSend(`\nTunggu sebentar..\n`);
     sock.sendMessage(from, {
       video: {
-        url: data[0].url[0].url
+        url: data.play
       },
-      caption: data[0].meta.title
+      caption: data.description
     });
   });
   break;
