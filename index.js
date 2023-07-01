@@ -452,6 +452,15 @@ case 'tiktok':
     });
   });
   break;
+  case 'chat':
+    if (!q) {
+      return reply(`Contoh:\n${prefix + command} apa itu google?`)
+    } else {
+      dlx.ChatGpt(q).then( data => {
+        reply(data.text)
+      })
+    }
+    break;
 case 'igstory':
 case 'igs':
   if (!q) {
