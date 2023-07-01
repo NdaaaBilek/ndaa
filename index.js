@@ -1,8 +1,6 @@
-/**
-  * Script Amburadul Ga Karuan
-  * Created By NathanaeL
-  * https://wa.me/6289652948525
-**/
+/*
+wa.me/6285640575421
+*/
 
 const { default: WAConnection, useMultiFileAuthState, generateWAMessageFromContent, getContentType, downloadContentFromMessage, makeCacheableSignalKeyStore } = require('@adiwajshing/baileys');
 const pino = require('pino');
