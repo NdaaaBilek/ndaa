@@ -17,7 +17,6 @@ const yts = require('yt-search');
 const moment = require('moment-timezone');
 const formData = require('form-data');
 const ffmpeg = require('fluent-ffmpeg');
-const xfar = require('xfarr-api');
 const path = require('path');
 const fs = require('fs');
 const { format } = require('util');
