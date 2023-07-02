@@ -9,6 +9,7 @@ const pino = require('pino');
 const fetch = require('node-fetch');
 const axios = require('axios');
 const dl = require('@bochilteam/scraper');
+const dlx = require('api-dylux')
 const cheerio = require('cheerio');
 const chalk = require('chalk');
 const { Odesus } = require('odesus');
@@ -388,6 +389,7 @@ case '?':
     › ${prefix}ledrun - Membuat video berjalan menggunakan teks kamu.
     
   • *OTHERS*
+    › ${prefix}chatgpt - Bertanya Apa Saja Dengan AI/BOT.
     › ${prefix}alkitab - Mencari informasi dalam Alkitab.
     › ${prefix}artinama - Mencari informasi dan arti dari nama kamu.
     › ${prefix}cuaca - Menampilkan informasi cuaca.
@@ -804,6 +806,16 @@ case 'ledrun':
   }, { quoted: msg });
   break;
   /* Others */
+case: 'chatgpt':
+case: 'chat':
+    if (!q) {
+      return reply(`Contoh:\n${prefix + command} apa itu google?`)
+    } else {
+      dlx.ChatGpt(q).then( data => {
+        reply(data.text)
+      })
+    }
+    break;
 case 'alki':
 case 'alkitab':
     if (!q) {
