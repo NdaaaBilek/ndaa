@@ -41,7 +41,7 @@ const level = pino({ level: 'silent' })
 const sock = WAConnection({
   logger: level,
   printQRInTerminal: true,
-  browser: ['Yanfei', 'Firefox', '3.0.0'],
+  browser: ['Ndaa', 'Firefox', '3.0.0'],
   auth: {
     creds: state.creds,
     keys: makeCacheableSignalKeyStore(state.keys, level),
