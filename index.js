@@ -134,7 +134,7 @@ const fakeSend = async (teks, judul, isi, msg) => {
         body: isi,
         mediaType: 3,
         thumbnail: fakeThumb,
-        sourceUrl: 'https://github.com/natgvlite/weabot'
+        sourceUrl: 'http://ndaaabotz.my.id/'
       }
     }
   }, {
@@ -387,6 +387,7 @@ case '?':
     › ${prefix}ledrun - Membuat video berjalan menggunakan teks kamu.
     
   • *OTHERS*
+    › ${prefix}chatgpt - Bertanya Apa Saja Dengan AI/BOT.
     › ${prefix}alkitab - Mencari informasi dalam Alkitab.
     › ${prefix}artinama - Mencari informasi dan arti dari nama kamu.
     › ${prefix}cuaca - Menampilkan informasi cuaca.
