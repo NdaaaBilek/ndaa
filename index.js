@@ -520,7 +520,7 @@ case 'ytmp4':
   fakeSend(`\nTunggu sebentar..\n`);
   var url = q;
   var yt = await dl.youtubedl(url).catch(async () => await dl.youtubedl(url));
-  var dl_url = await yt.video['360p'].download();
+  var dl_url = await yt.video['240p'].download();
   setTimeout(() => {
     sock.sendMessage(from, { video: { url: dl_url }, caption: `*${yt.title}*` });
   }, 3000);
