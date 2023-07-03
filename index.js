@@ -390,8 +390,6 @@ case '?':
     › ${prefix}alkitab - Mencari informasi dalam Alkitab.
     › ${prefix}artinama - Mencari informasi dan arti dari nama kamu.
     › ${prefix}cuaca - Menampilkan informasi cuaca.
-    › ${prefix}desuinfo - Mencari informasi tentang anime/manga.
-    › ${prefix}desusearch - Mencari gambar anime/manga.
     › ${prefix}get - Menampilkan informasi link.
     › ${prefix}infogempa - Menampilkan informasi gempa terkini.
     › ${prefix}owner - Menampilkan informasi pemilik bot.
@@ -862,45 +860,6 @@ case 'cuaca':
       title: "Cuaca Hari Ini",
     })
   );
-  break;
-case 'desuinfo':
-  if (!q) {
-    return reply(`Contoh:\n${prefix + command} URL`);
-  }
-  const slug = await resolveDesuUrl(q);
-  if (!slug || slug.type !== 'anime') {
-    return;
-  }
-  const anime = await ods.getAnimeInfo(slug);
-  if (!anime) {
-    return;
-  }
-  anime.episodes = anime.episodes.filter((x) => !/batch/gi.test(x.q));
-  const episodeList = anime.episodes.slice(0, 5).map((e, i) => `     ${i + 1}. ${e.title} (${e.q})`).join('\n');
-  await sock.sendMessage(from, {
-    text: `*${anime.name}*\n\n${anime.synopsis}\n\n*Genres:*\n${anime.genres.map((x) => x.name).join(', ')}\n\n*Status:*\n${anime.status}\n\n*Rating:*\n${anime.rating}\n\n*Episodes:*\n${episodeList}\n\n*Duration:*\n${anime.duration}\n\n*Release:*\n${anime.releasedAt}\n\n*Studio:*\n${anime.studio}\n\n*Link:*\n${anime.q}`,
-    quoted: msg,
-    image: {
-      url: anime.image
-    }
-  });
-  break;
-case 'desusearch':
-  if (!q) {
-    return reply(`Contoh:\n${prefix + command} Kimetsu no Yaiba`);
-  }
-  const results = await ods.search(q);
-  if (!results.length) {
-    await sock.sendMessage(from, {
-      text: 'No results found'
-    }, { quoted: msg });
-    return;
-  }
-  const searchResultsText = results.map((r, i) => `${i + 1}. ${r.name} (${r.url})`).join('\n\n');
-  await sock.sendMessage(from, {
-    text: `*Search results for ${q}*\n\n${searchResultsText}`,
-    quoted: msg
-  });
   break;
 case 'get':
 case 'fetch':
