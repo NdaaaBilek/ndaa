@@ -1020,6 +1020,21 @@ try {
       console.error('Error:', error.message);
       reply('An error occurred while fetching tsunami data.');
     }
+    case 'lirik':
+    case 'lyrics':
+      if (!q) {
+        return reply(`Contoh:\n${prefix + command} query`);
+      }
+      dlx.lyrics(q)
+      .then(data => {
+        reply(`Title: ${data.title}\nArtis: ${data.artist}\n\nlyrics: ${data.lyrics}`);
+      })
+      .catch(error => {
+        reply(`Maaf, Tidak Dapat Menemukan Lirik dari Lagu ${q}`);
+      })
+      .finally(() => {
+        console.log('error');
+      });    
     break;
 case 'waifu':
   try {
